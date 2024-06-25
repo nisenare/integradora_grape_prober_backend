@@ -25,9 +25,3 @@ def manage_sensors_query(request):
     img_str,
     status = status.HTTP_200_OK
   )
-
-
-def save_image(name: str, file: any) -> None:
-  with open(name, 'wb+') as destino:
-    for chunk in file.chunks():
-      destino.write(chunk)

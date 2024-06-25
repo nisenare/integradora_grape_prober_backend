@@ -49,17 +49,8 @@ def _get_grapes_dict(name: str, set_name: str):
 
 def _get_all_dicts():
   train =  _get_grapes_dict("mimc_train_images.json", "train_set")
-  #test = _get_grapes_dict("mimc_test_images.json", "test_set")
-  #val =  _get_grapes_dict("mimc_valid_images.json", "valid_set")
-
-  print("TRAIN IMAGES: " + str(len(train)))
-  #print("TEST IMAGES: " + str(len(test)))
-  #print("VAL IMAGES: " + str(len(val)))
-
   return {
-    "train": train, 
-    #"test": test,
-    #"valid": val
+    "train": train
   }
 
 
@@ -75,8 +66,7 @@ def _register_datasets():
 
 _register_datasets()
 grapes_metadata = MetadataCatalog.get("grapes_train")
-grapes_metadata.set(thing_dataset_id_to_contiguous_id = {0: 1, 1: 2, 2: 3})
-print(grapes_metadata.get("thing_dataset_id_to_contiguous_id"))
+
 
 # SETUP
 cfg = get_cfg()
@@ -88,12 +78,17 @@ cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.77
 predictor = DefaultPredictor(cfg)
 
 # FUNCTIONS
+def save_image(name: str, file: any) -> None:
+  with open(name, 'wb+') as destino:
+    for chunk in file.chunks():
+      destino.write(chunk)
+
+
 def predict(image_bin):
   im = cv2.imdecode(np.fromstring(image_bin.read(), np.uint8), cv2.IMREAD_UNCHANGED)
   outputs = predictor(im)
   v = Visualizer(im[:, :, ::-1],
     metadata = grapes_metadata
   )
-  print(outputs)
   out = v.draw_instance_predictions(outputs["instances"].to("cpu"))
   return out.get_image()[:, :, ::-1]
