@@ -5,7 +5,7 @@
 grapes_backend/grapes_backend_app/output/
 
 ### Detectron2 ###
-grapes_backend/detectron2/*
+grapes_backend/detectron2/
 
 ### IMAGES ###
 *.png

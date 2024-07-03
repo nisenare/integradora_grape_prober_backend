@@ -6,7 +6,9 @@ class SenseQueryModel(models.Model):
   ph = models.FloatField()
   image = models.FileField(upload_to='images/')
 
-class ResultModel(models.Model):
-  annotated_image = models.FileField()
-  brix_estimation = models.FloatField()
-  maturity = models.CharField(max_length = 12)
+
+class PredictionModel(models.Model):
+  date_time = models.DateTimeField(default = timezone.now)
+  annotated_image = models.TextField()
+  overall_maturity = models.CharField(max_length = 11)
+  ph = models.FloatField()
