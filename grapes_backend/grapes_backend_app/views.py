@@ -1,6 +1,7 @@
 from PIL import Image
 from django.http.response import JsonResponse, HttpResponse
 from django.core import serializers
+from django.shortcuts import render
 from rest_framework.parsers import JSONParser
 from rest_framework import status
 from grapes_backend_app.models import PredictionModel, SenseQueryModel
@@ -25,8 +26,19 @@ def manage_sensors_query(request):
     overall_maturity = result["overall_maturity"],
     ph = result["ph"]
   )
-  result_model.save()
+
+  if not (result_model.overall_maturity == "None"):
+    result_model.save()
+    
   return JsonResponse(
     result,
     status = status.HTTP_200_OK,
   )
+
+# Vistas HTTP
+def login(response):
+  return render(response, "grapes_backend_app/login.html", {})
+
+
+def dashboard(response):
+  return HttpResponse("Aqui se supone que va el dashboard")

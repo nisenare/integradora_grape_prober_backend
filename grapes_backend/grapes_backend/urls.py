@@ -17,11 +17,12 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path, re_path
+from django.urls import path, re_path, include
 from grapes_backend_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include("grapes_backend_app.urls")),
     re_path(r'^api/sensequery', views.manage_sensors_query)
 ]
 
