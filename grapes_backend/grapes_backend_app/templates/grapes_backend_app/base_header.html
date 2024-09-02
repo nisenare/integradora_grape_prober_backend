@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'grapes_backend_app/style_dashboard.css' %}">
+    <script src="{% static 'grapes_backend_app/dashboard.js' %}" type=text/javascript></script>
+    <title>GrapeSense Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header-container acrylic-card-color">
+            <div class="header-row">
+                <div class="header-cell">
+                    <img src="{% static 'grapes_backend_app/Grape Sense Light.svg' %}" alt="GrapeSense Logo" class="logo">
+                </div>
+                <div class="header-cell">
+                    <form action="{% url 'logout' %}" method="post" class="btn-logout-form">
+                        {% csrf_token %}
+                        <button type="submit">
+                            <i class="bx bx-log-out-circle"></i> 
+                            <span class="logout">Cerrar Sesión</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </header>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

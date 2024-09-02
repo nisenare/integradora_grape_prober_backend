@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'grapes_backend_app/style_login_error.css' %}">
+    <title>Auth error</title>
+</head>
+<body>
+    <div class="login-card">
+        <h2><img src="{% static 'grapes_backend_app/warning_icon.svg' %}" width="180"
+            height="100" />        </h2>
+
+        {% if form.errors %}
+            <h3 class="warning_error_title">¡Error!</h3>
+            <p>Nombre de usuario o contraseña incorrectos.</p>
+            <form method="post"  class="login-form">
+                {% csrf_token %}
+                <button type="submit">
+                    <a href="{% url 'login_form' %}">Volver a Login</a>
+                </button>
+            </form>
+        {% else %}
+            <h3 class="warning_error_title">¡Error!</h3>
+            <p>Necesitas iniciar sesión para ver esto.</p>
+            <form method="post"  class="login-form">
+                {% csrf_token %}
+                <button type="submit">
+                    <a href="{% url 'login_form' %}">Volver a Login</a>
+                </button>
+            </form>
+        {% endif %}
+    </div>    
+</body>
+</html>

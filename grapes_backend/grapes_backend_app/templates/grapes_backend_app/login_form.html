@@ -1,10 +1,12 @@
+
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'grapes_backend_app/style.css' %}">
+    <link rel="stylesheet" href="{% static 'grapes_backend_app/style_login.css' %}">
     <title>Grape Sense Login</title>
 </head>
 <body>
@@ -12,11 +14,11 @@
         <h2><img src="{% static 'grapes_backend_app/Grape Sense.svg' %}" width="180"
             height="100" />        </h2>
         <h3>Enter your credentials</h3>
-
-        <form class="login-form">
-            <input type="text" placeholder="Username">
-            <input type="password" placeholder="Password">
-            <button type="submit">LOGIN</button>
+        <form method="post"  class="login-form" action="{% url 'login' %}">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <button type="submit">Login</button>
         </form>
     </div>    
 </body>

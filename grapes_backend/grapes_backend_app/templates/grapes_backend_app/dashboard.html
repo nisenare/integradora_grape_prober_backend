@@ -1,0 +1,76 @@
+{% extends "grapes_backend_app/base_header.html" %}
+{% block content %}
+<main class="main-container">
+    <div class="main-row">
+        <div class="sidebar acrylic-card-color">
+            <div class="thumbnails">
+                {% for prediction in predictions %}
+                <div onclick="setPredictionInfo('{{ prediction.date_time }}', '{{ prediction.annotated_image }}', '{{ prediction.overall_maturity }}', '{{ prediction.ph }}')" class="thumbnail">
+                    <img id="image_{{ prediction.id }}">
+                    <script  type="text/javascript">
+                        setThumbnailImage('{{ prediction.id }}', '{{ prediction.annotated_image }}');
+                    </script>
+                    <div class="thumbnail-text">
+                        <p>{{ prediction.overall_maturity }}</p>
+                        <p>{{ prediction.date_time }}</p>
+                    </div>
+                </div>
+                {% endfor %} 
+                <form class="bottom-nav">
+                    {% csrf_token %}
+
+                    {% if page.has_previous %}
+                    <div style = "float: left;">
+                        <a class="bottom-button" href="/dashboard/{{page.prev_page}}">
+                            <span class="margin-right">PREV</span>
+                            <i class="bx bx-chevron-left"></i>
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% if page.has_next %}
+                    <div style = "float: right;">
+                        <a class="bottom-button" href="/dashboard/{{page.next_page}}">
+                            <i class="bx bx-chevron-right"></i>
+                            <span class="margin-left">NEXT</span>
+                        </a>
+                    </div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+        <div class="details" id="details">
+            <div class="details-header acrylic-card-color">
+                <div class="details-table">
+                    <div class="details-row">
+                        <div class="details-tablecell">
+                            Fecha y hora:
+                        </div>
+                        <div id="fecha_detail" class="details-info-center">
+                            
+                        </div>
+                    </div>
+                    <div class="details-row">
+                        <div class="details-tablecell">
+                            pH:
+                        </div>
+                        <div id="ph_detail" class="details-info-center">
+                            
+                        </div>
+                    </div>
+                    <div class="details-row">
+                        <div class="details-tablecell">
+                            Madurez General:
+                        </div>
+                        <div id="madurez_detail" class="details-info-center">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="details-photo-container acrylic-card-color">
+                <img id = "image_detail">
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

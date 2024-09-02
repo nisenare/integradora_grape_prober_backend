@@ -23,7 +23,8 @@ from grapes_backend_app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("grapes_backend_app.urls")),
-    re_path(r'^api/sensequery', views.manage_sensors_query)
+    re_path(r'^api/sensequery', views.manage_sensors_query),
+    re_path(r'^api/authenticate', views.authenticate),
 ]
 
 if settings.DEBUG:

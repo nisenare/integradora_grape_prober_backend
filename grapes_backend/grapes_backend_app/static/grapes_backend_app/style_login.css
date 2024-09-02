@@ -6,6 +6,11 @@
 
 }
 
+a {
+    color: inherit; 
+    text-decoration: inherit;
+}
+
 html, body, .wrapper{
     height: 100%;
 }
@@ -22,12 +27,13 @@ body{
 
 .login-card{
     z-index: 3;
-    width: 100%;
-    margin: 0 24px;
     padding: 50px 10px 44px;
     border-radius: 1.25rem;
     background: #fff;
     text-align: center;
+    width: 329px;
+    margin: 6rem auto 8.1rem auto;
+    display: grid;
 }
 
 .login-card > h2{
@@ -41,12 +47,6 @@ body{
     margin: 0 0 30px;
     font-weight: 500 ;
     font-size: 1rex;
-}
-
-.login-card{
-    width: 329px;
-    margin: 6rem auto 8.1rem auto;
-    display: grid;
 }
 
 .login-form > input, .login-form > button{

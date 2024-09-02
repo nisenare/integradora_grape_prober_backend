@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+body {
+    font-family: "Roboto Mono";
+    margin: 0;
+    padding: 0;
+    background-image: url("background.svg");
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.acrylic-card-color {
+    background:#8f74c471;
+    backdrop-filter: blur(20px);
+}
+
+
+/*
+HEADER
+*/
+.header-container {
+    height: 80px;
+    display:table;
+    padding: 10px;
+}
+
+.header-container .header-row {
+    display: table-row;
+}
+
+.header-container .header-cell {
+    width: 50%;
+    display: table-cell;
+    height: inherit;
+    vertical-align: middle;
+}
+
+.header-container .header-row .header-cell .logo {
+    width: 150px;
+}
+
+.header-container .header-row .header-cell .btn-logout-form {
+    text-align: right;
+}
+
+.header-container .header-row .header-cell .btn-logout-form button {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 1.15rem;
+    margin-right: 10px;
+}
+
+/*
+    MAIN
+*/
+.main-container {
+    height: 100%;
+    margin: 20px;
+    display: table;
+}
+
+.main-container .main-row {
+    display: table-row;
+    height: inherit;
+}
+
+/*
+MAIN - SIDEBAR
+*/
+.sidebar {
+    display: inline-block;
+    width: 330px;
+    height: calc(100vh - 150px);
+    overflow: hidden;
+    border-radius: 1.25rem;
+    direction: rtl;
+}
+
+.sidebar .thumbnails {
+    scrollbar-width: thin;          
+    scrollbar-color: #4f406e #8f74c4b2;
+    height:inherit;
+    overflow-y: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.sidebar .thumbnails .thumbnail {
+    direction: ltr;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 100%;
+    height: 50px;
+    border-radius: 1.25rem;
+    display: table;
+    box-sizing: border-box;
+    padding: 15px;
+    margin: 10px 0 10px 0;
+    cursor: pointer;
+}
+
+.thumbnail img {
+    display: inline-block;
+    height: inherit;
+    vertical-align: middle;
+    border-radius: 10px;
+}
+
+.sidebar .thumbnails .thumbnail:hover {
+    background-color: #ededed;
+}
+
+.thumbnail-text {
+    display: inline-block;
+    line-height: 0em;
+    font-size: 0.7rem;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.thumbnails .bottom-nav {
+    height: fit-content;
+    width: 100%;
+    background-color: transparent;
+    margin: 0 0 10px 0;
+    text-align: center;
+    display: inline-block;
+}
+
+.thumbnails .bottom-nav .bottom-button {
+    border: 0;
+    padding: 0;
+    color:#ffffff;
+    background-color: #4f406e;
+    height: inherit;
+    display:inline-block;
+    border-radius: 10px;
+    font-family: "Roboto Mono";
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.thumbnails .bottom-nav .bottom-button:hover {
+    background-color: #8f74c4b2;
+}
+
+.margin-left {
+    margin-left: 5px;
+}
+
+.margin-right {
+    margin-right: 5px;
+}
+
+
+/*
+MAIN - DETAILS
+*/
+.details {
+    display: inline-block;
+    width: calc(100% - 340px);
+    height: calc(100vh - 150px);
+    overflow: hidden;
+    border-radius: 1.25rem;
+    visibility: hidden;
+}
+
+.details-header {
+    height: 150px;
+    border-radius: 1.25rem;
+    color:#ffffff;
+}
+
+.details-table {
+    display: table;
+    width: 100%;
+    height: inherit;
+}
+
+.details-row {
+    display: table-row;
+}
+
+.details-tablecell {
+    display: table-cell;
+    text-align: left;
+    padding: 0 0 0 15px;
+    vertical-align: middle;
+}
+
+.details-info-center {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.details-photo-container {
+    display: inline-block;
+    height: calc(100vh - 310px);
+    width: 100%;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border-radius: 1.25rem;
+    text-align: center;
+}
+
+.details-photo-container img {
+    height: inherit;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
